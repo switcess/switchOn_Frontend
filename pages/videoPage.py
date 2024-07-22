@@ -21,7 +21,7 @@ st.logo(image, link="https://github.com/switcess/switchOn_Frontend")
 
 
 
-st.title('2024-06-13')
+st.title('2024-07-23')
 
 col1, col2 = st.columns([3, 1])
 
@@ -33,7 +33,7 @@ with col2:
     ["절도", "분실", "방화", "전도"],
     ["절도", "방화"])
 
-
+st.markdown(''' #### 절도 13:25:15''')
 col1, col2 = st.columns([3, 1])
 
 with col1:
