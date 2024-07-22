@@ -27,34 +27,13 @@ st.title('SWITCH ON')
 
 
 
-# page = "https://github.com/switcess/switchOn_Frontend"
-# st.sidebar.title("ON")
-
-# pages = {
-#     "Page" : [
-#         st.Page("pages/monthGraph.py", title="월 별 이상행동 통계")
-#     ]
-# }
-
-# st.navigation(pages, position="sidebar")
-
-# st.write(st.session_state.foo)
-
-# 레이아웃 짜기
-# col1,col2 = st.columns([6,4])
-# with col1 :
-#   st.title('here is column1')
-# with col2 :
-#   st.title('here is column2')
-#   st.checkbox('this is checkbox1 in col2 ')
-
 # 실시간 동영상
 st.subheader("실시간 매장 cctv")
 video_file = open('testVideo.mp4', 'rb')
 video_bytes = video_file.read()
 
 st.video(video_bytes)
-st.write("2024-06-13") ######### 날짜 수정
+# st.write("2024-06-13") ######### 날짜 수정
 
 
 # st.sidebar.button("Reset", type="primary")
