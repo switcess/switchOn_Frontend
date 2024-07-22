@@ -33,25 +33,3 @@ video_file = open('testVideo.mp4', 'rb')
 video_bytes = video_file.read()
 
 st.video(video_bytes)
-# st.write("2024-06-13") ######### 날짜 수정
-
-
-# st.sidebar.button("Reset", type="primary")
-
-
-# col1,col2 = st.columns([2,1], gap='medium')
-
-# with col1:
-#     # 월 별 이상행동 감지 그래프
-#     st.subheader("월 별 이상행동 감지 그래프")
-#     chart_data = pd.DataFrame(np.random.randn(10, 1))
-
-#     st.line_chart(chart_data)
-
-# with col2:
-#     st.subheader('저장된 이상행동')
-
-#     st.page_link("pages/videoPage.py", label="2024-07-18", icon = "🚨")
-#     st.page_link("pages/test.py", label="2024-07-19", icon = "🚨")
-#     # st.page_link("pages/page_2.py", label="2024-07-20", icon="2️⃣", disabled=True)
-#     st.page_link("pages/videoPage.py", label="2024-07-20", icon = "🚨")
