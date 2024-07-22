@@ -37,9 +37,9 @@ with col1:
 
 with col2:
   st.subheader('저장된 이상행동')
-  st.page_link("pages/dashboard.py", label="2024-07-18", icon = "🚨")
-  st.page_link("pages/dashboard.py", label="2024-07-19", icon = "🚨")
-  st.page_link("pages/dashboard.py", label="2024-07-20", icon = "🚨")
+  st.page_link("pages/dashboard.py", label="절도 13:25:15", icon = "🚨")
+  st.page_link("pages/dashboard.py", label="방화 15:27:32", icon = "🚨")
+  st.page_link("pages/dashboard.py", label="절도 23:49:58", icon = "🚨")
 
 col1,col2,col3 = st.columns([1,2,1], gap='medium')
 with col1 :
