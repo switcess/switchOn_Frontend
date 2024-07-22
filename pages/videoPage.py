@@ -4,6 +4,10 @@ sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from pages import videoPage
 import pandas as pd
 import numpy as np
+import datetime
+
+st.set_page_config(layout="wide")
+empty1,con1,empty2 = st.columns([0.2,0.8,0.2])
 
 # 대시보드
 st.sidebar.page_link("main.py", label="실시간", icon = "🚨")
@@ -19,24 +23,23 @@ st.logo(image, link="https://github.com/switcess/switchOn_Frontend")
 
 st.title('2024-06-13')
 
+d = st.date_input("select date", )
 
-# 실시간 동영상
-video_file = open('testVideo.mp4', 'rb')
-video_bytes = video_file.read()
 
-st.video(video_bytes)
-st.write("2024-06-13") ######### 날짜 수정
 
-# ## 다운로드 버튼
-# with open("testVideo.mp4", "rb") as video:
-#     btn = st.download_button(
-#             label="Download",
-#             data=video,
-#             file_name="testVideo.mp4",
-#             mime="video/mp4"
-#           )
+col1, col2 = st.columns([3, 1])
 
-# col = st.columns((1.5, 4.5, 2), gap='medium')
+with col1:
+  # 실시간 동영상
+  video_file = open('testVideo.mp4', 'rb')
+  video_bytes = video_file.read()
+  st.video(video_bytes)
+
+with col2:
+  st.subheader('저장된 이상행동')
+  st.page_link("pages/dashboard.py", label="2024-07-18", icon = "🚨")
+  st.page_link("pages/dashboard.py", label="2024-07-19", icon = "🚨")
+  st.page_link("pages/dashboard.py", label="2024-07-20", icon = "🚨")
 
 col1,col2,col3 = st.columns([1,2,1], gap='medium')
 with col1 :

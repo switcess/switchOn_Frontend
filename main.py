@@ -39,6 +39,7 @@ st.video(video_bytes)
 # st.sidebar.button("Reset", type="primary")
 
 
+
 # col1,col2 = st.columns([2,1], gap='medium')
 
 # with col1:
