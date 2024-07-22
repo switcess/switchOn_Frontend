@@ -16,5 +16,11 @@ image = "assets/switcessLogo.png"
 st.logo(image, link="https://github.com/switcess/switchOn_Frontend")
 
 
+# 월 별 이상행동 감지 그래프
+st.subheader("월 별 이상행동 감지 그래프")
+chart_data = pd.DataFrame(np.random.randn(10, 1))
+st.line_chart(chart_data)
+
+
 
 
