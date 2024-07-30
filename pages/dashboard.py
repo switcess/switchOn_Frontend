@@ -1,10 +1,10 @@
-import streamlit as st
+import streamlit as st # type: ignore
 import sys, os
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from pages import videoPage
-import pandas as pd
-import numpy as np
-import plotly.express as px
+import pandas as pd # type: ignore
+import numpy as np # type: ignore
+import plotly.express as px # type: ignore
 
 st.set_page_config(layout="wide")
 empty1,con1,empty2 = st.columns([0.2,0.8,0.2])
