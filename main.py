@@ -1,9 +1,9 @@
-import streamlit as st
+import streamlit as st # type: ignore
 import sys, os
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from pages import videoPage
-import pandas as pd
-import numpy as np
+import pandas as pd # type: ignore
+import numpy as np # type: ignore
 
 
 st.set_page_config(layout="wide")

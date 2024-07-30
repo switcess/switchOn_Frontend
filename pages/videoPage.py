@@ -1,13 +1,27 @@
-import streamlit as st
+import streamlit as st # type: ignore
 import sys, os
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from pages import videoPage
-import pandas as pd
-import numpy as np
+import pandas as pd # type: ignore
+import numpy as np # type: ignore
 import datetime
 
 st.set_page_config(layout="wide")
 empty1,con1,empty2 = st.columns([0.2,0.8,0.2])
+
+
+def isNotFoundVideo(date):
+  if date == datetime.datetime.today().date(): # TODO : 오늘 날짜면 비디오 없다고 가정
+    photo_file = open('assets/notFound.png', 'rb')
+    photo_bytes = photo_file.read()
+    st.markdown("> | **저장된 이상 행동 비디오가 존재하지 않습니다.** |")
+    # st.write('저장된 이상 행동 비디오가 존재하지 않습니다.')
+    return st.image(photo_bytes)
+  else:
+    video_file = open('testVideo.mp4', 'rb')
+    video_bytes = video_file.read()
+    return st.video(video_bytes)
+
 
 # 대시보드
 st.sidebar.page_link("main.py", label="실시간", icon = "🚨")
@@ -38,9 +52,7 @@ col1, col2 = st.columns([3, 1])
 
 with col1:
   # 실시간 동영상
-  video_file = open('testVideo.mp4', 'rb')
-  video_bytes = video_file.read()
-  st.video(video_bytes)
+  isNotFoundVideo(d)
 
 with col2:
   st.subheader('저장된 이상행동')
@@ -56,3 +68,5 @@ with col2:
               file_name="testVideo.mp4",
               mime="video/mp4", type="primary"
             )
+
+
