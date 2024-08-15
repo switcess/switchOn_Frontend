@@ -28,6 +28,7 @@ st.title('SWITCH ON')
 
 
 # 실시간 동영상
+# 실시간 동영상
 st.subheader("실시간 매장 cctv")
 video_file = open('testVideo.mp4', 'rb')
 video_bytes = video_file.read()

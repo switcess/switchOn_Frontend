@@ -9,7 +9,6 @@ import datetime
 st.set_page_config(layout="wide")
 empty1,con1,empty2 = st.columns([0.2,0.8,0.2])
 
-
 def isNotFoundVideo(date):
   if date == datetime.datetime.today().date(): # TODO : 오늘 날짜면 비디오 없다고 가정
     photo_file = open('assets/notFound.png', 'rb')
