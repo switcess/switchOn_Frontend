@@ -23,6 +23,15 @@ st.logo(image, link="https://github.com/switcess/switchOn_Frontend")
 # 이상행동 감지 그래프
 st.title("이상행동 감지 그래프")
 
+container = st.container(border=True)
+container.markdown(
+    """
+    이번 달은 <span style="font-size: 18px; font-weight: bold;">도난</span>이 가장 많이 일어났으며, 
+    <span style="font-size: 18px; font-weight: bold;">00:30-1:30</span> 사이에 이상 행동이 가장 많이 감지됩니다.
+    """,
+    unsafe_allow_html=True
+)
+
 st.subheader("시간대")
 chart_data = pd.DataFrame(np.random.randn(10, 1))
 
