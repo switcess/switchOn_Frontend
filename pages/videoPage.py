@@ -59,13 +59,18 @@ with col2:
   st.page_link("pages/dashboard.py", label="방화 15:27:32", icon = "🚨")
   st.page_link("pages/dashboard.py", label="절도 23:49:58", icon = "🚨")
 
+  col3, col4 = st.columns([1, 1.5])
   ## 다운로드 버튼
-  with open("testVideo.mp4", "rb") as video:
+  with col3:
+    with open("testVideo.mp4", "rb") as video:
       btn = st.download_button(
-              label="Download",
+              label="다운로드",
               data=video,
               file_name="testVideo.mp4",
               mime="video/mp4", type="primary"
             )
+  with col4:
+    if st.button(label="신고"):
+          st.write("신고 버튼이 클릭되었습니다.")
 
 
