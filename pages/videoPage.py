@@ -39,7 +39,11 @@ st.title('2024-06-13')
 col1, col2 = st.columns([3, 1])
 
 with col1:
-  d = st.date_input("select date", )
+  col1_1, col1_2 = st.columns([1, 1])
+  with col1_1:
+    d = st.date_input("select month", )
+  with col1_2:
+    d = st.time_input("select date", )
 with col2:
   options = st.multiselect(
     "범죄",
