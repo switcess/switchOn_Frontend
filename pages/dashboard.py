@@ -2,9 +2,10 @@ import streamlit as st # type: ignore
 import sys, os
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from pages import videoPage
-import pandas as pd # type: ignore
-import numpy as np # type: ignore
-import plotly.express as px # type: ignore
+import pandas as pd
+import numpy as np
+import plotly.express as px
+import plotly.graph_objs as go
 
 st.set_page_config(layout="wide")
 empty1,con1,empty2 = st.columns([0.2,0.8,0.2])
@@ -32,34 +33,48 @@ container.markdown(
     unsafe_allow_html=True
 )
 
-st.subheader("시간대")
-chart_data = pd.DataFrame(np.random.randn(10, 1))
-
-st.line_chart(chart_data)
-
 
 col1, col2 = st.columns([1, 1])
 
-
-chart_data = pd.DataFrame({
-    'crime': ['절도', '방화', '도난', '전도'],
-    'time': [1, 3, 5, 4]
-})
+crime_data = pd.DataFrame({
+            'crime': ['절도', '방화', '도난', '전도'],
+            'time': [1, 3, 5, 4]
+        })
 
 with col1:
-    st.subheader("월 별")
-    fig = px.bar(chart_data, x='crime', y='time',
-	text_auto=True) # text_auto: 값 표시 여부
-    # fig.update_layout(width=800, height=600)
-    # fig.update_traces(textangle=0) # 그래프 안에 텍스트 씌우기
+    # 두 번째 데이터프레임
+    st.subheader("시간대")
+    time_data = pd.DataFrame(np.random.randn(10, 1), columns=["이상행동 감지"])
+
+    # Plotly를 사용하여 크기를 조절한 라인 차트 생성
+    fig = go.Figure()
+
+    # 라인 차트 추가
+    fig.add_trace(go.Scatter(y=time_data["이상행동 감지"], mode='lines'))
+
+    # 차트 레이아웃 크기 조절
+    fig.update_layout(
+        width=400,  # 차트의 가로 크기
+        height=200,  # 차트의 세로 크기
+        margin=dict(l=20, r=20, t=20, b=20)  # 마진 조절
+    )
+
+    # Streamlit에 차트 표시
     st.plotly_chart(fig)
 
 
+
+    st.subheader("월 별")
+    fig = px.bar(crime_data, x='crime', y='time', text_auto=True)
+    fig.update_layout(width=400, height=300)
+    st.plotly_chart(fig)
+
 with col2:
     st.subheader("파이")
-    fig = px.pie(chart_data, names='crime', values='time', hole=.3) # hole을 주면 donut 차트
+    fig = px.pie(crime_data, names='crime', values='time', hole=.3) # hole을 주면 donut 차트
 
     fig.update_traces(textposition='inside', textinfo='percent+label+value')
+    fig.update_layout(width=550, height=550)
     fig.update_layout(font=dict(size=14))
     fig.update(layout_showlegend=False) # 범례표시 제거
 
