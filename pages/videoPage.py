@@ -75,6 +75,5 @@ with col2:
             )
   with col4:
     if st.button(label="신고"):
-          st.write("신고 버튼이 클릭되었습니다.")
-
+          st.markdown(f'<meta http-equiv="refresh" content="0; url=https://www.police.go.kr/">', unsafe_allow_html=True)
 
