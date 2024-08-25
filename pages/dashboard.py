@@ -1,7 +1,6 @@
-import streamlit as st # type: ignore
+import streamlit as st
 import sys, os
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-from pages import videoPage
 import pandas as pd
 import numpy as np
 import plotly.express as px
@@ -42,24 +41,16 @@ crime_data = pd.DataFrame({
         })
 
 with col1:
-    # 두 번째 데이터프레임
     st.subheader("시간대")
     time_data = pd.DataFrame(np.random.randn(10, 1), columns=["이상행동 감지"])
-
-    # Plotly를 사용하여 크기를 조절한 라인 차트 생성
     fig = go.Figure()
-
-    # 라인 차트 추가
     fig.add_trace(go.Scatter(y=time_data["이상행동 감지"], mode='lines'))
 
-    # 차트 레이아웃 크기 조절
     fig.update_layout(
-        width=400,  # 차트의 가로 크기
-        height=200,  # 차트의 세로 크기
-        margin=dict(l=20, r=20, t=20, b=20)  # 마진 조절
+        width=400,
+        height=200,
+        margin=dict(l=20, r=20, t=20, b=20)
     )
-
-    # Streamlit에 차트 표시
     st.plotly_chart(fig)
 
 
@@ -71,11 +62,11 @@ with col1:
 
 with col2:
     st.subheader("파이")
-    fig = px.pie(crime_data, names='crime', values='time', hole=.3) # hole을 주면 donut 차트
+    fig = px.pie(crime_data, names='crime', values='time', hole=.3)
 
     fig.update_traces(textposition='inside', textinfo='percent+label+value')
     fig.update_layout(width=550, height=550)
     fig.update_layout(font=dict(size=14))
-    fig.update(layout_showlegend=False) # 범례표시 제거
+    fig.update(layout_showlegend=False)
 
     st.plotly_chart(fig)

@@ -1,10 +1,6 @@
-import streamlit as st # type: ignore
+import streamlit as st
 import sys, os
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-from pages import videoPage
-import pandas as pd # type: ignore
-import numpy as np # type: ignore
-
 
 st.set_page_config(layout="wide")
 
@@ -18,16 +14,10 @@ st.sidebar.page_link("pages/dashboard.py", label="대시보드", icon = "📈")
 image = "assets/switcessLogo.png"
 st.logo(image, link="https://github.com/switcess/switchOn_Frontend")
 
-
-
-
 empty1,con1,empty2 = st.columns([0.2,0.8,0.2])
 
-st.title('SWITCH ON')
+st.title('Entry')
 
-
-
-# 실시간 동영상
 # 실시간 동영상
 st.subheader("실시간 매장 cctv")
 video_file = open('testVideo.mp4', 'rb')
