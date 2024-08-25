@@ -1,20 +1,20 @@
-import streamlit as st # type: ignore
+import streamlit as st
 import sys, os
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-from pages import videoPage
-import pandas as pd # type: ignore
-import numpy as np # type: ignore
-import datetime
+from datetime import datetime
+import requests
+import modules.modal as modal
 
 st.set_page_config(layout="wide")
 empty1,con1,empty2 = st.columns([0.2,0.8,0.2])
 
 def isNotFoundVideo(date):
-  if date == datetime.datetime.today().date(): # TODO : 오늘 날짜면 비디오 없다고 가정
+  if str(date) == str(datetime.now().strftime('%Y-%m-%d')): # TODO : 오늘 날짜면 비디오 없다고 가정
     photo_file = open('assets/notFound.png', 'rb')
     photo_bytes = photo_file.read()
-    st.markdown("> | **저장된 이상 행동 비디오가 존재하지 않습니다.** |")
-    # st.write('저장된 이상 행동 비디오가 존재하지 않습니다.')
+    # st.markdown("> | **저장된 이상 행동 비디오가 존재하지 않습니다.** |")
+    modal.show_modal()
+    
     return st.image(photo_bytes)
   else:
     video_file = open('testVideo.mp4', 'rb')
@@ -41,9 +41,9 @@ col1, col2 = st.columns([3, 1])
 with col1:
   col1_1, col1_2 = st.columns([1, 1])
   with col1_1:
-    d = st.date_input("select month", )
+    selected_date = st.date_input("select month", )
   with col1_2:
-    d = st.time_input("select date", )
+    selected_time = st.time_input("select date", )
 with col2:
   options = st.multiselect(
     "범죄",
@@ -54,8 +54,8 @@ with col2:
 col1, col2 = st.columns([3, 1])
 
 with col1:
-  # 실시간 동영상
-  isNotFoundVideo(d)
+  st.write(selected_date)
+  isNotFoundVideo(selected_date)
 
 with col2:
   st.subheader('저장된 이상행동')
@@ -77,3 +77,12 @@ with col2:
     if st.button(label="신고"):
           st.markdown(f'<meta http-equiv="refresh" content="0; url=https://www.police.go.kr/">', unsafe_allow_html=True)
 
+
+
+
+data_to_send = {
+    "date": "날짜"
+}
+
+response = requests.post("http://127.0.0.1:8000/video", json=data_to_send).json()
+st.write(response)
