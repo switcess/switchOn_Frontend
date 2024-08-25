@@ -4,6 +4,7 @@ sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from datetime import datetime
 import modules.modal as modal
 from modules.findAllVideo import findAllVideo
+# from streamlit_option_menu import option_menu
 
 st.set_page_config(layout="wide")
 empty1,con1,empty2 = st.columns([0.2,0.8,0.2])
@@ -19,11 +20,15 @@ def isNotFoundVideo(date):
     return st.video(video_bytes)
 
 
-# 대시보드
+# # 대시보드
 st.sidebar.page_link("main.py", label="실시간", icon = "🚨")
 st.sidebar.page_link("pages/videoPage.py", label="과거 영상 보기", icon = "📼")
 st.sidebar.page_link("pages/dashboard.py", label="대시보드", icon = "📈")
 
+
+# with st.sidebar:
+#     selected = option_menu("Main Menu", ["실시간", '과거 영상 보기', '대시보드'], 
+#         icons=['house', "", "bi bi-bar-chart-line-fill"], menu_icon="bi bi-bookmark-check-fill", default_index=0)
 
 # 아이콘
 image = "assets/switcessLogo.png"
@@ -44,7 +49,7 @@ with col2:
   options = st.multiselect(
     "범죄",
     ["절도", "분실", "방화", "전도"],
-    ["절도", "방화"])
+    ["절도", "전도"])
 
 
 col1, col2 = st.columns([3, 1])
