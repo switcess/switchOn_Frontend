@@ -51,7 +51,7 @@ with col2:
     ["절도", "분실", "방화", "전도"],
     ["절도", "전도"])
 
-
+st.markdown(''' #### 절도 13:25:15''')
 col1, col2 = st.columns([3, 1])
 
 with col1:
