@@ -9,10 +9,17 @@ st.set_page_config(layout="wide")
 empty1, con1, empty2 = st.columns([0.2, 0.8, 0.2])
 
 def openVideo():
-    video_file = open('testVideo.mp4', 'rb')
+    video_name = st.session_state.get('video_name', "mainVideo.mp4")
+    video_file = open(video_name, 'rb')
     video_bytes = video_file.read()
     start_time = st.session_state.get('video_start_time', 0)
     return st.video(video_bytes, start_time=start_time, loop=True, autoplay=True, muted=True)
+
+# def openVideoWithButtonClick():
+#     video_file = open('assets/video/video1.mp4', 'rb')
+#     video_bytes = video_file.read()
+#     start_time = st.session_state.get('video_start_time', 0)
+#     return st.video(video_bytes, start_time=start_time, loop=True, autoplay=True, muted=True)
 
 # Sidebar
 st.sidebar.page_link("main.py", label="실시간", icon="🚨")
@@ -50,20 +57,23 @@ with col1:
 with col2:
     st.subheader('저장된 이상행동')
     time_offsets = [10, 20, 30, 40]
+    video_offsets = ["assets/video/video1.mp4", "assets/video/video2.mp4", "assets/video/video3.mp4"]
+    # openVideoWithButtonClick()
     
     for i, result in enumerate(resultList):
         button_label = f"🚨 {result['actions']} {result['time']}"
         if st.button(label=button_label, key=f"button_{i}"):
+            st.session_state.video_name = video_offsets[i]
             st.session_state.video_start_time = time_offsets[i]
 
     col3, col4 = st.columns([1, 1.5])
     ## Download button
     with col3:
-        with open("testVideo.mp4", "rb") as video:
+        with open("mainVideo.mp4", "rb") as video:
             btn = st.download_button(
                 label="다운로드",
                 data=video,
-                file_name="testVideo.mp4",
+                file_name="mainVideo.mp4",
                 mime="video/mp4", type="primary"
             )
     with col4:
