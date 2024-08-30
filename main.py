@@ -6,8 +6,8 @@ st.set_page_config(layout="wide")
 
 # 대시보드
 st.sidebar.page_link("main.py", label="실시간", icon = "🚨")
-st.sidebar.page_link("pages/videoPage.py", label="과거 영상 보기", icon = "📼")
-st.sidebar.page_link("pages/dashboard.py", label="대시보드", icon = "📈")
+st.sidebar.page_link("pages/videoPage.py", label="과거 영상 조회", icon = "📼")
+st.sidebar.page_link("pages/dashboard.py", label="월간 통계 보고서", icon = "📈")
 
 
 # 아이콘
