@@ -23,4 +23,4 @@ st.subheader("실시간 매장 cctv")
 video_file = open('mainVideo.mp4', 'rb')
 video_bytes = video_file.read()
 
-st.video(video_bytes)
+st.video(video_bytes, start_time=10, loop=True, autoplay=True, muted=True)

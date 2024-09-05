@@ -15,12 +15,6 @@ def openVideo():
     start_time = st.session_state.get('video_start_time', 0)
     return st.video(video_bytes, start_time=start_time, loop=True, autoplay=True, muted=True)
 
-# def openVideoWithButtonClick():
-#     video_file = open('assets/video/video1.mp4', 'rb')
-#     video_bytes = video_file.read()
-#     start_time = st.session_state.get('video_start_time', 0)
-#     return st.video(video_bytes, start_time=start_time, loop=True, autoplay=True, muted=True)
-
 # Sidebar
 st.sidebar.page_link("main.py", label="실시간", icon="🚨")
 st.sidebar.page_link("pages/videoPage.py", label="과거 영상 조회", icon="📼")
@@ -42,10 +36,9 @@ with col1:
     with col1_2:
         selected_time = st.time_input("select date")
 with col2:
-    options = st.multiselect(
+    selected_action = st.selectbox(
         "범죄",
-        ["절도", "분실", "방화", "전도"],
-        ["절도", "전도"]
+        ["절도", "분실", "방화", "전도"]
     )
 
 st.markdown(''' #### 절도 13:25:15''')
@@ -58,9 +51,11 @@ with col2:
     st.subheader('저장된 이상행동')
     time_offsets = [10, 20, 30, 40]
     video_offsets = ["assets/video/video1.mp4", "assets/video/video2.mp4", "assets/video/video3.mp4"]
-    # openVideoWithButtonClick()
     
-    for i, result in enumerate(resultList):
+    # Filter resultList based on the selected action
+    filtered_results = [result for result in resultList if result['actions'] == selected_action]
+
+    for i, result in enumerate(filtered_results):
         button_label = f"🚨 {result['actions']} {result['time']}"
         if st.button(label=button_label, key=f"button_{i}"):
             st.session_state.video_name = video_offsets[i]
