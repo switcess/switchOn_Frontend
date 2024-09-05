@@ -6,17 +6,20 @@ import numpy as np
 import plotly.express as px
 import plotly.graph_objs as go
 
-st.set_page_config(layout="wide")
+# st.set_page_config(layout="wide")
 empty1,con1,empty2 = st.columns([0.2,0.8,0.2])
+
+st.set_page_config(page_title="dashboard", layout="wide")
+
 
 # 대시보드
 st.sidebar.page_link("main.py", label="실시간", icon = "🚨")
 st.sidebar.page_link("pages/videoPage.py", label="과거 영상 조회", icon = "📼")
-st.sidebar.page_link("pages/dashboard.py", label="월간 통계 보고서", icon = "📈")
+st.sidebar.page_link("pages/dashboard.py", label="월간 감지 보고서", icon = "📈")
 
 
 # 아이콘
-image = "assets/switcessLogo.png"
+image = "assets/logo.png"
 st.logo(image, link="https://github.com/switcess/switchOn_Frontend")
 
 
